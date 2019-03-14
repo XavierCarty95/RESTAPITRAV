@@ -1,0 +1,19 @@
+{
+  "name": "restapitrav",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XavierCarty95/RESTAPITRAV.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XavierCarty95/RESTAPITRAV/issues"
+  },
+  "homepage": "https://github.com/XavierCarty95/RESTAPITRAV#readme"
+}
