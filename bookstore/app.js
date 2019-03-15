@@ -3,6 +3,8 @@ var app = express()
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+app.use(bodyParser.json())
+
 var Book = require("./models/book")
 
 var Genre = require("./models/genres")
@@ -33,5 +35,73 @@ app.get('/api/books', function(req,res){
     })
     
 })
+
+app.get('/api/books/:_id', function(req,res){
+    Book.getBookById(req.params._id,function(error, book){
+        if(error){
+            throw error; 
+            
+        }
+        res.json(book)
+    })
+    
+});
+
+app.post('/api/genres', function(req,res){
+    var genre = req.body;
+    
+    Genre.addGenre(genre, function(error, genre){
+        if(error){
+            throw error; 
+            
+        }
+        res.json(genre)
+    })
+    
+});
+app.put('/api/genres/:_id', function(req,res){
+    var id = req.params._id;
+    var genre = req.body;
+    Genre.updateGenre(id, genre, {}, function(error, genre){
+        if(error){
+            throw error; 
+            
+        }
+        res.json(genre)
+    })
+    
+});
+
+app.post('/api/books', function(req,res){
+    var book = req.body;
+    
+    Book.addBook(book,function(error, book){
+        if(error){
+            throw error; 
+            
+        }
+        res.json(book)
+    })
+    
+});
+
+
+app.put('/api/books/:_id', function(req,res){
+    var id = req.params._id;
+    var book = req.body;
+    
+    Book.updateBook(id, book, {}, function(error, book){
+        if(error){
+            throw error; 
+            
+        }
+        res.json(book)
+    })
+    
+});
+
+
+
+
 app.listen(process.env.PORT, process.env.IP)
 console.log('Running on my port')
